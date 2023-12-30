@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:online_store/Bindings/controller_binding.dart';
 import 'package:online_store/Theme/custom_theme.dart';
 import 'package:online_store/View/home_view.dart';
 import 'package:online_store/View/product_details_view.dart';
@@ -7,6 +9,9 @@ import 'package:online_store/View/search_view.dart';
 
 void main() {
   runApp(const MyApp());
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp], //!set orientation to portrait
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,6 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: myTheme,
       home: const HomeView(),
+      initialBinding: ControllerBinding(),
       //* Route using GetX get page
       getPages: [
         GetPage(name: '/SearchPage', page: () => const SearchPageView()),
