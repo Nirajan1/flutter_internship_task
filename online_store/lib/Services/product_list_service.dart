@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:online_store/Model/product_list_model.dart';
 import 'package:online_store/Utils/http_client.dart';
@@ -12,7 +10,6 @@ class RemoteProductListService {
         headers: HttpClient.headers,
       );
       var jsonString = response.body;
-      print(jsonString);
       if (response.statusCode == 200) {
         return allProductModelFromJson(jsonString);
       }

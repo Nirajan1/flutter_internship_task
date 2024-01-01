@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_store/Utils/app_color.dart';
 import 'package:online_store/Utils/app_size.dart';
 
 class AddToCartButton extends StatelessWidget {
@@ -12,7 +13,7 @@ class AddToCartButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: AppSize.hPadding),
       child: MaterialButton(
         elevation: .3,
-        color: Colors.blue,
+        color: AppColor.ionColor,
         height: 50,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
