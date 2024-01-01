@@ -48,8 +48,8 @@ class HomeView extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         var items = allProductListController.productList[index];
                         return InkWell(
-                          onTap: () async {
-                            await singleProductController.fetchSingleProduct(items.id);
+                          onTap: () {
+                            singleProductController.fetchSingleProduct(items.id);
                             Get.toNamed('/ProductDetailPage');
                           },
                           child: Card(

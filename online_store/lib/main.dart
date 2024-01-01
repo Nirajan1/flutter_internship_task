@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:online_store/Bindings/controller_binding.dart';
 import 'package:online_store/Theme/custom_theme.dart';
+import 'package:online_store/View/cart_list_view.dart';
 import 'package:online_store/View/home_view.dart';
 import 'package:online_store/View/product_details_view.dart';
 import 'package:online_store/View/search_view.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/SearchPage', page: () => const SearchPageView()),
         GetPage(name: '/ProductDetailPage', page: () => const ProductDetailView()),
+        GetPage(name: '/CartListViewPage', page: () => const CartListViewPage()),
       ],
     );
   }

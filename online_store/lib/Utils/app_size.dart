@@ -1,5 +1,3 @@
-import 'package:get/get.dart';
-
 class AppSize {
   //*screen padding
   static const double sPadding = 4;
@@ -9,6 +7,6 @@ class AppSize {
   static const double hPadding = 8;
   //*sized box height
   static const double sHeight = 8;
-  //*container width
-  static double cWidth = Get.size.width;
+  //*container padding
+  static double cPadding = 18;
 }
