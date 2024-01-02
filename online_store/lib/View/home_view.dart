@@ -19,8 +19,16 @@ class HomeView extends StatelessWidget {
         appBar: AppBar(
           title: const Text('OnlineStore'),
           centerTitle: true,
-          actions: const [
+          actions: [
             Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 9.0),
+              child: InkWell(
+                  onTap: () {
+                    Get.toNamed('/SearchPage');
+                  },
+                  child: const Icon(Icons.search_outlined)),
+            ),
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 9.0),
               child: Icon(Icons.shopping_cart_outlined),
             ),
@@ -36,66 +44,109 @@ class HomeView extends StatelessWidget {
               return SingleChildScrollView(
                 child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: AppSize.sPadding, vertical: AppSize.sPadding),
-                    child: GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 0.76,
-                      ),
-                      physics: const NeverScrollableScrollPhysics(),
-                      padding: const EdgeInsets.all(5),
-                      shrinkWrap: true,
-                      itemCount: allProductListController.productList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        var items = allProductListController.productList[index];
-                        return InkWell(
+                    child: Column(
+                      children: [
+                        InkWell(
                           onTap: () {
-                            singleProductController.fetchSingleProduct(items.id);
-                            Get.toNamed('/ProductDetailPage');
+                            Get.toNamed('/SearchPage');
                           },
-                          child: Card(
-                            elevation: 1, // Adjust the elevation as needed
-                            surfaceTintColor: Colors.white,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                //*image and product title
-                                ImageTitleWidget(items: items),
-
-                                //*prince and button
-                                SizedBox(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      //*price Section for the product
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                                        child: Text.rich(
-                                          TextSpan(
-                                            children: [
-                                              const TextSpan(
-                                                text: 'Rs ',
-                                                style: TextStyle(fontWeight: FontWeight.bold),
-                                              ),
-                                              TextSpan(
-                                                text: "${items.price}",
-                                                style: Get.textTheme.titleMedium,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ), //* Add to cart button
-
-                                      const SizedBox(height: 4.0),
-
-                                      const AddToCartButton(),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: AppSize.hPadding,
+                              vertical: 10,
                             ),
+                            child: Container(
+                                height: 50,
+                                width: Get.size.width,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9.0),
+                                  color: Colors.white,
+                                ),
+                                child: const Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Search in OnlineStore',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Icon(
+                                        Icons.search_outlined,
+                                        size: 19,
+                                      ),
+                                    ),
+                                  ],
+                                )),
                           ),
-                        );
-                      },
+                        ),
+                        GridView.builder(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.76,
+                          ),
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: const EdgeInsets.all(5),
+                          shrinkWrap: true,
+                          itemCount: allProductListController.productList.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            var items = allProductListController.productList[index];
+                            return InkWell(
+                              onTap: () {
+                                singleProductController.fetchSingleProduct(items.id);
+                                Get.toNamed('/ProductDetailPage');
+                              },
+                              child: Card(
+                                elevation: 1, // Adjust the elevation as needed
+                                surfaceTintColor: Colors.white,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    //*image and product title
+                                    ImageTitleWidget(items: items),
+
+                                    //*prince and button
+                                    SizedBox(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          //*price Section for the product
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                                            child: Text.rich(
+                                              TextSpan(
+                                                children: [
+                                                  const TextSpan(
+                                                    text: 'Rs ',
+                                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                                  ),
+                                                  TextSpan(
+                                                    text: "${items.price}",
+                                                    style: Get.textTheme.titleMedium,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ), //* Add to cart button
+
+                                          const SizedBox(height: 4.0),
+
+                                          const AddToCartButton(),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     )),
               );
             }
