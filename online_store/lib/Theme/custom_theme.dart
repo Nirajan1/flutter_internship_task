@@ -14,7 +14,6 @@ final ThemeData myTheme = ThemeData(
       color: AppColor.ionColor,
     ),
     // backgroundColor: AppColor.backgroundColor,
-    centerTitle: true,
   ),
   textTheme: const TextTheme(
     headlineMedium: TextStyle(

@@ -7,6 +7,7 @@ import 'package:online_store/Model/product_list_model.dart';
 import 'package:online_store/Utils/app_size.dart';
 import 'package:online_store/Utils/local_storage.dart';
 import 'package:online_store/Widgets/logout_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Widgets/add_to_cart_button.dart';
 
@@ -18,12 +19,57 @@ class HomeView extends StatelessWidget {
     var allProductListController = Get.find<ProductListController>();
     var singleProductController = Get.find<SingleProductController>();
     var cartController = Get.find<CartController>();
+    void showLanguageDialog(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Center(child: Text('Select Language'.tr)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    SharedPreferences preferences = await SharedPreferences.getInstance();
+                    preferences.setString("langCode", "en");
+                    preferences.setString("countryCode", "En");
+                    Get.updateLocale(const Locale("en", "En"));
+                    Get.back();
+                  },
+                  child: Text('English'.tr),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () async {
+                    SharedPreferences preferences = await SharedPreferences.getInstance();
+                    preferences.setString("langCode", "ne");
+                    preferences.setString("countryCode", "NE");
+                    Get.updateLocale(const Locale("ne", "Ne"));
+                    Get.back();
+                  },
+                  child: Text('Nepali'.tr),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('OnlineStore'),
-          centerTitle: true,
+          title: Text('OnlineStore'.tr),
           actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 9.0),
+              child: InkWell(
+                onTap: () {
+                  showLanguageDialog(context);
+                },
+                child: const Icon(Icons.language_outlined),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 9.0),
               child: InkWell(
@@ -100,19 +146,19 @@ class HomeView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(9.0),
                                   color: Colors.white,
                                 ),
-                                child: const Row(
+                                child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.all(8.0),
+                                      padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        'Search in OnlineStore',
-                                        style: TextStyle(
+                                        'Search in OnlineStore'.tr,
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.w300,
                                         ),
                                       ),
                                     ),
-                                    Padding(
+                                    const Padding(
                                       padding: EdgeInsets.all(8.0),
                                       child: Icon(
                                         Icons.search_outlined,

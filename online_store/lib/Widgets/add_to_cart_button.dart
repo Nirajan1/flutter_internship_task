@@ -39,7 +39,7 @@ class AddToCartButton extends StatelessWidget {
               if (cartController.isProductInCart(items)) {
                 // Show a Snackbar message
                 Get.snackbar(
-                  'Already in Cart',
+                  'Already in Cart'.tr,
                   '${items.title} is already in your cart.',
                   isDismissible: true,
                   snackPosition: SnackPosition.BOTTOM,
@@ -49,7 +49,7 @@ class AddToCartButton extends StatelessWidget {
                 cartController.addToCart(items);
                 // Show a confirmation message
                 Get.snackbar(
-                  'Added to Cart',
+                  'Added to Cart'.tr,
                   '${items.title} added to the cart.',
                   isDismissible: true,
                   snackPosition: SnackPosition.BOTTOM,
@@ -57,17 +57,21 @@ class AddToCartButton extends StatelessWidget {
               }
             }
           },
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.add_shopping_cart_outlined,
                 color: Colors.white,
+                size: 16,
               ),
-              SizedBox(width: 6.0),
-              Text(
-                'Add to cart',
-                style: TextStyle(color: Colors.white),
+              const SizedBox(width: 6.0),
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  'Add to cart'.tr,
+                  style: const TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

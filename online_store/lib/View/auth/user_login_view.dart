@@ -30,7 +30,7 @@ class _LoginPageViewState extends State<LoginPageView> {
                 await LocalStorage.getUserToken();
                 Get.offAllNamed('/home');
               },
-              child: const Text('skip'),
+              child: Text('skip'.tr),
             )
           ],
         ),
@@ -61,20 +61,20 @@ class _LoginPageViewState extends State<LoginPageView> {
                     TextFormField(
                       controller: AppTextEditingController.userName,
                       keyboardType: TextInputType.name,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         isDense: true,
-                        label: Text('User Name'),
-                        prefixIcon: Icon(Icons.person_outlined),
-                        prefixStyle: TextStyle(
+                        label: Text('User Name'.tr),
+                        prefixIcon: const Icon(Icons.person_outlined),
+                        prefixStyle: const TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 16,
                         ),
-                        border: OutlineInputBorder(
+                        border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(
                             Radius.circular(9.0),
                           ),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(
                             color: AppColor.primaryColor,
                             width: 2,
@@ -100,7 +100,7 @@ class _LoginPageViewState extends State<LoginPageView> {
                         onChanged: (value) {},
                         decoration: InputDecoration(
                           isDense: true,
-                          label: const Text('Password'),
+                          label: Text('Password'.tr),
                           prefixIcon: const Icon(Icons.lock_outlined),
                           suffixIcon: IconButton(
                             onPressed: () {
@@ -162,9 +162,9 @@ class _LoginPageViewState extends State<LoginPageView> {
                                   Loader.hide();
                                 }
                               },
-                              child: const Text(
-                                "Login",
-                                style: TextStyle(
+                              child: Text(
+                                "Login".tr,
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.white,

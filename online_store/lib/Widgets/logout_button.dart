@@ -14,7 +14,7 @@ class LogoutButton extends StatelessWidget {
         onPressed: () async {
           Get.defaultDialog(
               barrierDismissible: false,
-              title: 'Logout',
+              title: 'Logout'.tr,
               titleStyle: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -23,7 +23,7 @@ class LogoutButton extends StatelessWidget {
                 'Are you sure you want to log out?'.tr,
               ),
               cancel: MainButton(
-                  title: 'No',
+                  title: 'No'.tr,
                   onPressedCallback: () {
                     Get.back();
                   }),

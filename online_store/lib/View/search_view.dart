@@ -39,7 +39,7 @@ class _SearchPageViewState extends State<SearchPageView> {
             child: TextFormField(
               decoration: InputDecoration(
                 isDense: true,
-                hintText: 'Search in OnlineStore',
+                hintText: 'Search in OnlineStore'.tr,
                 hintStyle: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
