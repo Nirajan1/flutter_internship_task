@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:online_store/Bindings/controller_binding.dart';
 import 'package:online_store/Theme/custom_theme.dart';
+import 'package:online_store/Utils/local_string.dart';
 import 'package:online_store/View/auth/splash_screen_view.dart';
 import 'package:online_store/View/auth/user_login_view.dart';
 import 'package:online_store/View/cart_list_view.dart';
@@ -25,8 +26,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+
       title: 'Flutter Demo',
       theme: myTheme,
+      translations: LocaleStrings(),
       home: const SplashScreenView(),
       initialBinding: ControllerBinding(),
       //* Route using GetX get page

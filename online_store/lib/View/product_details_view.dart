@@ -5,7 +5,6 @@ import 'package:online_store/Controller/single_product_controller.dart';
 import 'package:online_store/Theme/custom_theme.dart';
 import 'package:online_store/Utils/app_color.dart';
 import 'package:online_store/Utils/app_size.dart';
-import 'package:online_store/Widgets/add_to_cart_button.dart';
 import 'package:online_store/Widgets/buy_now_button.dart';
 
 class ProductDetailView extends StatelessWidget {

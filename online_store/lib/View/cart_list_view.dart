@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:online_store/Controller/cart_controller.dart';
-import 'package:online_store/Controller/single_product_controller.dart';
 import 'package:online_store/Services/single_product_service.dart';
 
 class CartListViewPage extends StatelessWidget {
@@ -10,7 +9,6 @@ class CartListViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cartController = Get.find<CartController>();
-    var singleProductController = Get.find<SingleProductController>();
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(

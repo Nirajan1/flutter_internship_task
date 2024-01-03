@@ -4,11 +4,9 @@ import 'package:online_store/Controller/cart_controller.dart';
 import 'package:online_store/Controller/product_list_controller.dart';
 import 'package:online_store/Controller/single_product_controller.dart';
 import 'package:online_store/Model/product_list_model.dart';
-import 'package:online_store/Utils/app_color.dart';
 import 'package:online_store/Utils/app_size.dart';
 import 'package:online_store/Utils/local_storage.dart';
 import 'package:online_store/Widgets/logout_button.dart';
-import 'package:online_store/Widgets/main_button.dart';
 
 import '../Widgets/add_to_cart_button.dart';
 

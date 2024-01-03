@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
 import 'package:online_store/Utils/local_storage.dart';
 import 'package:online_store/Widgets/main_button.dart';
 
