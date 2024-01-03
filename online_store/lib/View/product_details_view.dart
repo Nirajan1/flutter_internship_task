@@ -26,7 +26,6 @@ class ProductDetailView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               BuyNowButton(),
-              AddToCartButton(),
             ],
           ),
         ),

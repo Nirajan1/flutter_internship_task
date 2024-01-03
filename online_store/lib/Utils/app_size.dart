@@ -6,7 +6,7 @@ class AppSize {
   //*horizontal Padding
   static const double hPadding = 8;
   //*sized box height
-  static const double sHeight = 8;
+  static const double sHeight = 12;
   //*container padding
   static double cPadding = 18;
 }

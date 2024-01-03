@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:online_store/Bindings/controller_binding.dart';
 import 'package:online_store/Theme/custom_theme.dart';
+import 'package:online_store/View/auth/splash_screen_view.dart';
+import 'package:online_store/View/auth/user_login_view.dart';
 import 'package:online_store/View/cart_list_view.dart';
 import 'package:online_store/View/home_view.dart';
 import 'package:online_store/View/product_details_view.dart';
@@ -25,10 +27,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: myTheme,
-      home: const HomeView(),
+      home: const SplashScreenView(),
       initialBinding: ControllerBinding(),
       //* Route using GetX get page
       getPages: [
+        GetPage(name: '/SplashScreenView', page: () => const SplashScreenView()),
+        GetPage(name: '/home', page: () => const HomeView()),
+        GetPage(name: '/login', page: () => const LoginPageView()),
         GetPage(name: '/SearchPage', page: () => const SearchPageView()),
         GetPage(name: '/ProductDetailPage', page: () => const ProductDetailView()),
         GetPage(name: '/CartListViewPage', page: () => const CartListViewPage()),

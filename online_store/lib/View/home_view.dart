@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:online_store/Controller/cart_controller.dart';
 import 'package:online_store/Controller/product_list_controller.dart';
 import 'package:online_store/Controller/single_product_controller.dart';
 import 'package:online_store/Model/product_list_model.dart';
+import 'package:online_store/Utils/app_color.dart';
 import 'package:online_store/Utils/app_size.dart';
+import 'package:online_store/Utils/local_storage.dart';
+import 'package:online_store/Widgets/logout_button.dart';
+import 'package:online_store/Widgets/main_button.dart';
 
 import '../Widgets/add_to_cart_button.dart';
 
@@ -14,6 +19,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     var allProductListController = Get.find<ProductListController>();
     var singleProductController = Get.find<SingleProductController>();
+    var cartController = Get.find<CartController>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -28,10 +34,44 @@ class HomeView extends StatelessWidget {
                   },
                   child: const Icon(Icons.search_outlined)),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 9.0),
-              child: Icon(Icons.shopping_cart_outlined),
+            Obx(
+              () => Stack(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Get.toNamed('/CartListViewPage');
+                      },
+                      icon: const Icon(Icons.shopping_cart_outlined)),
+                  Positioned(
+                    right: 10,
+                    top: 6,
+                    child: Container(
+                      width: 15,
+                      height: 15,
+                      decoration: const BoxDecoration(
+                        color: Colors.blue,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "${cartController.cartItems.length}",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
+            LocalStorage.accessToken != null
+                ? const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 9.0),
+                    child: LogoutButton(),
+                  )
+                : const SizedBox(),
           ],
         ),
         body: Obx(
@@ -132,11 +172,14 @@ class HomeView extends StatelessWidget {
                                                 ],
                                               ),
                                             ),
-                                          ), //* Add to cart button
+                                          ),
 
                                           const SizedBox(height: 4.0),
-
-                                          const AddToCartButton(),
+                                          //* Add to cart button
+                                          AddToCartButton(
+                                            cartController: cartController,
+                                            items: items,
+                                          ),
                                         ],
                                       ),
                                     ),
