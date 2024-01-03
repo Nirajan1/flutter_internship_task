@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:online_store/Utils/app_color.dart';
 import 'package:online_store/Utils/local_storage.dart';
 import 'package:online_store/Widgets/main_button.dart';
 
@@ -24,11 +25,14 @@ class LogoutButton extends StatelessWidget {
               ),
               cancel: MainButton(
                   title: 'No'.tr,
+                  color: Colors.grey.shade100,
                   onPressedCallback: () {
                     Get.back();
                   }),
               confirm: MainButton(
                 title: 'Yes'.tr,
+                color: AppColor.primaryColor,
+                textColor: Colors.white,
                 onPressedCallback: () async {
                   await LocalStorage.logout();
                   Get.offAllNamed('/login');

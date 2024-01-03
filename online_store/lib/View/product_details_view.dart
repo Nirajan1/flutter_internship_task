@@ -137,7 +137,9 @@ class ProductDetailView extends StatelessWidget {
                                   const Icon(Icons.star, color: AppColor.ionColor, size: 16),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 3),
-                                    child: Text("${singleProductController.productDetails.value.rating!.rate}/5"),
+                                    child: Text(
+                                      "${singleProductController.productDetails.value.rating?.rate ?? 'N/A'}/5",
+                                    ),
                                   ),
                                 ],
                               ),

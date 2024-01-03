@@ -121,46 +121,51 @@ class _SearchPageViewState extends State<SearchPageView> {
                   final product = RemoteProductListService.searchResults[index];
                   return Padding(
                     padding: const EdgeInsets.all(2.0),
-                    child: Card(
-                      elevation: 2,
-                      child: ListTile(
-                        leading: SizedBox(
-                          height: 80,
-                          width: 60,
-                          child: Image.network(
-                            product['image'],
-                            fit: BoxFit.cover,
-                            filterQuality: FilterQuality.medium,
-                            loadingBuilder: (context, child, loadingProgress) {
-                              if (loadingProgress == null) {
-                                return child;
-                              } else {
-                                return CircularProgressIndicator.adaptive(
-                                  value: loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1) : null,
-                                );
-                              }
-                            },
-                            errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
-                              return const Icon(Icons.error);
-                            },
+                    child: SizedBox(
+                      width: Get.size.width,
+                      height: 100,
+                      child: Card(
+                        elevation: 2,
+                        color: Colors.white,
+                        child: ListTile(
+                          leading: SizedBox(
+                            height: Get.size.height,
+                            width: 50,
+                            child: Image.network(
+                              product['image'],
+                              fit: BoxFit.contain,
+                              filterQuality: FilterQuality.medium,
+                              loadingBuilder: (context, child, loadingProgress) {
+                                if (loadingProgress == null) {
+                                  return child;
+                                } else {
+                                  return CircularProgressIndicator.adaptive(
+                                    value: loadingProgress.expectedTotalBytes != null ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1) : null,
+                                  );
+                                }
+                              },
+                              errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+                                return const Icon(Icons.error);
+                              },
+                            ),
                           ),
-                        ),
-                        title: Text(
-                          product['title'],
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w300,
+                          title: Text(
+                            product['title'],
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w300,
+                            ),
                           ),
+                          subtitle: Text(
+                            'Rs ${product['price']}',
+                          ),
+                          onTap: () {
+                            singleProductController.fetchSingleProduct(product['id']);
+                            Get.toNamed('/ProductDetailPage');
+                          },
+                          // Add more details as needed
                         ),
-                        subtitle: Text(
-                          'Rs ${product['price']}',
-                        ),
-                        onTap: () {
-                          singleProductController.fetchSingleProduct(product['id']);
-                          Get.toNamed('/ProductDetailPage');
-                        },
-                        // Add more details as needed
                       ),
                     ),
                   );

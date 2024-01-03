@@ -19,6 +19,7 @@ class HomeView extends StatelessWidget {
     var allProductListController = Get.find<ProductListController>();
     var singleProductController = Get.find<SingleProductController>();
     var cartController = Get.find<CartController>();
+    //*dialog box to changes the language
     void showLanguageDialog(BuildContext context) {
       showDialog(
         context: context,
@@ -61,6 +62,7 @@ class HomeView extends StatelessWidget {
         appBar: AppBar(
           title: Text('OnlineStore'.tr),
           actions: [
+            //*language button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 9.0),
               child: InkWell(
@@ -70,6 +72,8 @@ class HomeView extends StatelessWidget {
                 child: const Icon(Icons.language_outlined),
               ),
             ),
+
+            //*search button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 9.0),
               child: InkWell(
@@ -78,6 +82,8 @@ class HomeView extends StatelessWidget {
                   },
                   child: const Icon(Icons.search_outlined)),
             ),
+
+            //*cart button
             Obx(
               () => Stack(
                 children: [
@@ -110,6 +116,8 @@ class HomeView extends StatelessWidget {
                 ],
               ),
             ),
+
+            //*log out button
             LocalStorage.accessToken != null
                 ? const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 9.0),

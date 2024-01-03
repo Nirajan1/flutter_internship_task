@@ -40,7 +40,7 @@ class AddToCartButton extends StatelessWidget {
                 // Show a Snackbar message
                 Get.snackbar(
                   'Already in Cart'.tr,
-                  '${items.title} is already in your cart.',
+                  '${items.title} ${'is already in your cart'.tr}',
                   isDismissible: true,
                   snackPosition: SnackPosition.BOTTOM,
                 );
@@ -50,7 +50,7 @@ class AddToCartButton extends StatelessWidget {
                 // Show a confirmation message
                 Get.snackbar(
                   'Added to Cart'.tr,
-                  '${items.title} added to the cart.',
+                  '${items.title} ${'added to the cart'.tr}',
                   isDismissible: true,
                   snackPosition: SnackPosition.BOTTOM,
                 );

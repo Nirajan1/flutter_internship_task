@@ -12,4 +12,15 @@ class CartController extends GetxController {
   bool isProductInCart(AllProductModel product) {
     return cartItems.contains(product);
   }
+
+  void removeFromCart(AllProductModel product) {
+    cartItems.remove(product);
+    // Show a confirmation message
+    Get.snackbar(
+      'Removed from Cart'.tr,
+      '${product.title} ${'removed from the cart'.tr}',
+      isDismissible: true,
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
 }

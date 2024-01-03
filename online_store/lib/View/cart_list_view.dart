@@ -12,20 +12,21 @@ class CartListViewPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
-            title: const Text('Cart'),
+            title: Text('${'Mycart'.tr}(${cartController.cartItems.length})'),
             centerTitle: true,
           ),
           body: Obx(
             () => cartController.cartItems.isEmpty
-                ? const Center(
-                    child: Text('cart is empty'),
+                ? Center(
+                    child: Text('cart is empty'.tr),
                   )
                 : ListView.builder(
                     itemCount: cartController.cartItems.length,
                     itemBuilder: (BuildContext context, int index) {
                       var items = cartController.cartItems[index];
                       return Card(
-                        elevation: .2,
+                        elevation: 2,
+                        color: Colors.white,
                         child: ListTile(
                           leading: SizedBox(
                             height: 80,
@@ -47,6 +48,13 @@ class CartListViewPage extends StatelessWidget {
                                 return const Icon(Icons.error);
                               },
                             ),
+                          ),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () {
+                              // Remove the item from the cart when the delete button is pressed
+                              cartController.removeFromCart(items);
+                            },
                           ),
                           title: Text(
                             items.title,
