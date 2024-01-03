@@ -44,4 +44,7 @@
 
 ## Additional Notes
 
--
+-Using Instruction
+Simply login in to the app using the username and password given in the login page.
+you can skip the login process and go to the home page however add to cart button will navigate you
+the login page again
